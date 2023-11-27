@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "882983805619",
+    "project_id": "dumy-f8077",
+    "storage_bucket": "dumy-f8077.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882983805619:android:b61042ace81bd32be046c6",
+        "android_client_info": {
+          "package_name": "com.Sofos.dumy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSDM157TolEv8j5v7_jorpBNeOfJTzxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882983805619:android:79c628f94dce7ab3e046c6",
+        "android_client_info": {
+          "package_name": "com.example.firebaseapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrSDM157TolEv8j5v7_jorpBNeOfJTzxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
