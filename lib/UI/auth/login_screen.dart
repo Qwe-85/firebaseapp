@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebaseapp/UI/auth/Sign_up.dart';
 import 'package:firebaseapp/UI/round_button.dart';
+import 'package:firebaseapp/Utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,12 +16,24 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formkey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
     super.dispose();
     emailController.dispose();
     passwordController.dispose();
+  }
+
+  void Login() {
+    _auth
+        .signInWithEmailAndPassword(
+            email: emailController.text.toString(),
+            password: passwordController.text.toString())
+        .then((value) {})
+        .onError((error, stackTrace) {
+      utils().ToastMessage(error.toString());
+    });
   }
 
   @override
@@ -86,14 +99,16 @@ class _LoginScreenState extends State<LoginScreen> {
             Roundbutton(
                 title: 'Login',
                 onTap: () {
-                  if (_formkey.currentState!.validate()) {}
+                  if (_formkey.currentState!.validate()) {
+                    Login();
+                  }
                 }),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               children: [
-                Text("don;t have account? "),
+                const Text("don;t have account? "),
                 TextButton(
                     onPressed: () {
                       Navigator.push(context,
