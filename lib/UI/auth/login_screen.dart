@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebaseapp/UI/Post/Post_screen.dart';
 import 'package:firebaseapp/UI/auth/Sign_up.dart';
 import 'package:firebaseapp/UI/round_button.dart';
 import 'package:firebaseapp/Utils/utils.dart';
@@ -13,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool loading = false;
   final _formkey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -26,13 +28,26 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void Login() {
+    setState(() {
+      loading = true;
+    });
     _auth
         .signInWithEmailAndPassword(
             email: emailController.text.toString(),
             password: passwordController.text.toString())
-        .then((value) {})
-        .onError((error, stackTrace) {
+        .then((value) {
+      utils().ToastMessage(value.user!.email.toString());
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PostScreen()));
+      setState(() {
+        loading = false;
+      });
+    }).onError((error, stackTrace) {
+      debugPrint(error.toString());
       utils().ToastMessage(error.toString());
+      setState(() {
+        loading = false;
+      });
     });
   }
 
